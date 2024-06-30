@@ -175,9 +175,13 @@ body {
     height: 100%;
     display: block;
     margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
     /* background-color: rgb(217, 38, 163); */
 }
-
+.footer-tweet{
+    display: none;
+}
 
 
 @media screen and (max-width: 1150px) {
@@ -203,4 +207,11 @@ body {
     .twitter {
         display: none;
     }
+    .footer-tweet{
+        display: flex;
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 10%;
+    }
+    
 }
