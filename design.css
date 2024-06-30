@@ -1,14 +1,12 @@
 body {
     background-color: #e5e5e5cc;
     font-family: 'Times New Roman', Times, serif;
-    padding-bottom: 10em; /* Add some padding at the bottom */
 }
 
 .inpost-img {
     width: 100%;
     height: auto;
     margin-right: 20px;
-    margin-bottom: 10px;
 }
 
 .header {
@@ -21,6 +19,8 @@ body {
     height: 100%;
     display: block;
     margin: 0 auto;
+
+    
 }
 
 .logo_container {
@@ -30,7 +30,7 @@ body {
 }
 
 .logo_container h1 {
-    color: rgb(1, 53, 1);
+    color: #013501;
     height: 100%;
     display: table-cell;
     vertical-align: middle;
@@ -60,7 +60,7 @@ body {
     display: table-cell;
     vertical-align: middle;
     height: 100%;
-    color: darkgreen;
+    color: #013501;
     font-family: 'Times New Roman', Times, serif;
     font-size: 1.2em;
     transition: .2s;
@@ -75,18 +75,26 @@ body {
     width: 100%;
     padding-top: 100px;
     display: flex;
+    flex-direction: row;
     justify-content: center;
+    /* background-color: red; */
 }
 
 .inner_main {
-    width: 60%;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    flex-direction: row;
+    gap: 5%;
+    justify-content: center;
+    margin: 0 auto;
+    /* background-color: rgb(0, 51, 255); */
+    margin-bottom: 10%;
 }
 
 .blog_content {
-    width: 60%;
+    width: 650px;
+    /* background-color: rgb(6, 174, 84); */
+    
 }
 
 .blog_content h2 {
@@ -106,7 +114,9 @@ body {
 }
 
 .profile_container {
-    width: 30%;
+    width: 300px;
+    /* background-color: rgb(174, 6, 163); */
+
 }
 
 .profile {
@@ -116,7 +126,6 @@ body {
     border-radius: 24px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
-    align-items: center;
 }
 
 .avatar {
@@ -151,23 +160,41 @@ body {
 
 .twitter {
     width: 100%;
-
     margin-top: 35px;
-    width: 100%;
+}
+
+.footer {
+    position: relative;
+    height: 100px;
+    margin-top: -100px;
+    /* background-color: rgb(171, 210, 28); */
+}
+
+.inner_footer {
+    width: 90%;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+    /* background-color: rgb(217, 38, 163); */
 }
 
 
-@media screen and (max-width: 1100px) {
+
+@media screen and (max-width: 1150px) {
     .inner_main {
         width: 90%;
         flex-direction: column;
         align-items: center;
     }
     .profile_container {
-        width: 90%;
+        width: 100%;
         order: 1;
-        margin-bottom: 60px;
-        margin-right: 60px;
+        margin-bottom: 60px; 
+        padding-left: 0px; 
+    }
+    .profile{
+        width: 95%;
+        padding-right: 10px;
     }
     .blog_content {
         width: 100%;
