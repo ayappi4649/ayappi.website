@@ -133,7 +133,26 @@ body {
     padding-top: 10px;
     line-height: 2;
 }
-
+.all_archive{
+    width: 100%;
+    justify-content: center;
+}
+.all_archive a{
+    text-decoration: none;
+}
+.all_archive h3{
+    height: auto;
+    font-size: 20px;
+    padding: 10px;
+    margin-top: 30px;
+    text-align: center;
+    background-color: rgb(228, 228, 228);
+    color: black;
+}
+.all_archive h3:hover{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: .2s;
+}
 .profile_container {
     width: 300px;
     /* background-color: rgb(174, 6, 163); */
@@ -228,9 +247,9 @@ body {
     margin-bottom: 100px;
     /* background-color: rgb(217, 38, 163); */
 }
-.footer-tweet{
+/* .footer-tweet{
     display: none;
-}
+} */
 
 
 @media screen and (max-width: 1045px) {
@@ -257,11 +276,11 @@ body {
     .twitter {
         display: none;
     }
-    .footer-tweet{
+    /* .footer-tweet{
         display: flex;
         width: 100%;
         padding-top: 10px;
         padding-bottom: 10%;
-    }
+    } */
     
 }
