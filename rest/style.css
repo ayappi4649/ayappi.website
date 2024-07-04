@@ -50,7 +50,7 @@ body{
 .top h1 {
     position: absolute;
     width: 100%;
-    top: 65%; /* 画面の中央より少し下 */
+    top: calc(55% + 10vh); /* 画面の中央より少し下 */
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 30px;
@@ -61,7 +61,7 @@ body{
 }
 .input {
     position: absolute;
-    top: 75%; /* 画面の中央より少し下 */
+    top: calc(51% + 20vh); /* 画面の中央より少し下 */
     left: 50%;
     transform: translate(-50%, -50%);
 }
