@@ -15,7 +15,7 @@ body{
     position: absolute;
     bottom: 0;
     background-color: rgb(73, 64, 64);
-    z-index: 2;
+    z-index: 5;
 }
 .inner_bottom{
     position: absolute;
@@ -23,7 +23,7 @@ body{
     transform: translate(-50%,0px);
     width: 100px;
     height: 100%;
-    z-index: 5;
+    z-index: 2;
 }
 .return,a{
     width: 100%;
