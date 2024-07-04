@@ -8,7 +8,6 @@ body{
     width: 100%;
     height: 80%;
     position: absolute;
-    z-index: 1;
 }
 .bottom{
     width: 100%;
@@ -49,15 +48,20 @@ body{
 
 }
 .top h1{
-    text-align: center;
-    margin-top: 450px;
+    position: absolute;
+    width: 100%;
+    transform: translate(15px,450px);
     font-size: 30px;
+    text-align: center;
     font-weight: bolder;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color:rgb(73, 64, 64);
 }
 .input{
-    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-80px,160px);
 }
 #character{
     position: absolute;
@@ -99,10 +103,10 @@ body{
     font-family: monospace;
     font-weight: bold;
     animation-name: fall;
-    animation-timing-function: ease-in-out; /* Easing effect */
+    animation-timing-function: ease-in-out; 
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-    transform: rotate(90deg); /* Rotate text 90 degrees */
+    transform: rotate(90deg); 
     transform-origin: left top; /* Set rotation origin */
     
 }
@@ -112,6 +116,6 @@ body{
         top: 0;
     }
     100% {
-        top: 200vh; /* 80% of viewport height */
+        top: 200vh; 
     }
 }
