@@ -50,9 +50,9 @@ body{
 .top h1 {
     position: absolute;
     width: 100%;
-    top: calc(61% + 5vh); 
+    top: 70%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -150%);
     font-size: 30px;
     text-align: center;
     font-weight: bolder;
@@ -61,10 +61,23 @@ body{
 }
 .input {
     position: absolute;
-    top: calc(58% + 15vh); 
+    top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+@media screen and (max-width: 768px) {
+    .top h1 {
+        top: calc(58% + 10vh); 
+        transform: translate(-50%, -150%);
+    }
+
+    .input {
+        top: calc(50% + 20vh); 
+        transform: translate(-50%, -50%);
+    }
+}
+
 #character{
     position: absolute;
     bottom: 0;
