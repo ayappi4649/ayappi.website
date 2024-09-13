@@ -32,6 +32,70 @@
                 <div class="blog_content">
                     <h2>2024</h2>
                     <article>
+                        <h3>9/12 Prompting と RAG </h3>
+                        <p>学んだ知識を自分なりに調べてまとめてみます。今日のテーマはプロンプティングとRAGについてです。</p>
+                        <hr>
+                        <p class="thick">Promptとは</p>
+                        <p style = "background-color: lightgray;">prompt is a natural language request submitted to a language model to receive a response back.Prompts can contain questions, instructions, contextual information, few-shot examples, and partial input for the model to complete or continue.<br>（DeepL翻訳）プロンプトとは、言語モデルに自然言語のリクエストを送信し、応答を返すことである。これには質問、指示、文脈情報、例など、モデルが完了または続行するための部分的な入力を含めることができます。<a href="https://cloud.google.com/vertex-ai/generative-ai/docs/learn/prompts/introduction-prompt-design">(google cloud)</a></p>
+
+                        <p>つまり、AIにタスクを指示する命令文のことをプロンプトと言います。<br>この命令文により、AIの出力文のクオリティが変わります。その質を向上させる方法が大きく分けて２種類あります。</p>
+                        <p>1. プロンプトで工夫する方法<br>2. 外部ツールの利用（RAG）する方法</p>
+
+                        <p>ちなみに、こういったプロンプト周りの研究をする Prompt Engineering と Prompt Designという学問分野があります。どちらもお互い近しい存在ですが、違いは以下の通りです。</p>
+
+                        <p style = "background-color: lightgray;">“prompt design focuses on formulating effective instructions, prompt engineering fine-tunes and enhances AI models to better respond to those prompts.<br>（DeepL翻訳）プロンプト・デザインは効果的な指示の策定に焦点を当て、プロンプト・エンジニアリングはそれらのプロンプトによりよく反応するようにAIモデルを微調整し、強化する。”<a href="https://daniel-ramos.medium.com/prompt-design-vs-prompt-engineering-unleashing-the-power-of-ai-language-models-3a606f9518d9">(Medium)</a></p>
+
+                        <p class="thick">1. プロンプトで工夫する方法<br>
+                            Few-shot Prompting <a href="https://arxiv.org/pdf/2005.14165">(arxiv)</a></p>
+                        <img src="home_image/1.png" class="inpost-img">
+                        <img src="home_image/1-1.png" class="inpost-img">
+                        <p>プロンプトに、複数の例を与える方法です。スクショにあるように、仮にある文章を英語からフランス語に翻訳したいとします。翻訳することを指示したうえで、具体的な例をプロンプトに明記してあげます。そして最後に翻訳してほしい単語を伝えることで、事前に渡した事例の法則にしたがいAIが精度の高い回答を出すというものです。</p>
+                        <p>zero shot - 例を入れない<br>
+
+                            one shot - 例を１つだけ提示<br>
+                            
+                            few shot - 例を複数提示</p>
+                        <p>グラフによると、複数の例を入力することで回答の精度が上がると報告されています。ちなみに、このようにAIが文脈から学習することを In-Context Learningと呼びます。</p>
+                        <p>Fine Tuningとの使い分け：Fine Tune することで、プロンプトに毎回事例を入れる必要がなくなり、モデルも調整されているので性能が出やすい反面、Fine tune されていることでタスクによっては不向きなものがあり、汎用性がないのがデメリットです。</p>
+
+                        <p class="thick">命令文の書き方に注目する</p>
+                        <p>2022年12月の論文により、命令文の投げかけ方によって出力の性能が変わるという検証結果があります。これは分類タスクにおいて、プロンプトの書き方で精度がどう変化したかを表したものです。<a href="https://arxiv.org/pdf/2212.04037">(arxiv)</a></p>
+                        <img src="home_image/2.png" class="inpost-img">
+
+
+                        <p class="thick">Chain-of Thought (CoT) Prompting</p>
+                        <p>Few shot promptingと少し似ていますが、CoTは事例とともに思考過程も入れるのが特徴です。CoTを使うことで、AIの出力にも思考過程を書いてくれるようになり、結果、特にモデルサイズが大きいものにおいて推論タスクで性能が向上します。<a href="https://proceedings.neurips.cc/paper_files/paper/2022/file/9d5609613524ecf4f15af0f7b31abca4-Paper-Conference.pdf">(NIPS papers)</a><br> 追記：ChatGPT o1モデルも、まさにこのCoTを追求しています。</p>
+                        <img src="home_image/3.png" class="inpost-img">
+
+
+                        <p class="thick">Zero-shot-CoT (Let’s think step by stepの追加)</p>
+                        <p>命令文の最後に、Let’s think step by stepと入れるだけで、思考過程を明示して推論能力が上がる、というものです。<a href="https://proceedings.neurips.cc/paper_files/paper/2022/file/8bb0d291acd4acf06ef112099c16f326-Paper-Conference.pdf">(NIPS papers)</a></p>
+
+
+                        <p class="thick">外部ツールの利用（RAG）する方法</p>
+                        <p>RAG - Retrieval Augmented Generation<br> 
+
+                            RAGとは、大規模言語モデル（LLM）によるテキスト生成に、外部情報の検索を組み合わせることで、回答精度を向上させる技術のことを指します。<br>
+                            
+                            → AI特有のハルシネーションを防ぐのに便利！</p>
+                        <p style = "background-color:lightgrey";> RAGが簡単に体験できるプラットフォーム：<a href="https://notebooklm.google.com/">NotebookLM</a></p>
+                        <p>このように外部ツールをや知識を利用して制度をあげるモデルを、 Augmented Language Models（ALM）と呼びます。</p>
+
+
+                        <p>＜Retrievalの仕組み＞<br>
+                        retrieval の役割は、外部テキストpからこちらが投げた質問（クエリ）qに類似した文章を見つけることです。<a href="https://speakerdeck.com/smiyawaki0820/retrieval-based-lm-rag-system-zatukurili-jie-suru?slide=7">(link)</a></p>
+
+                        <img src="home_image/5.png" class="inpost-img">
+                        <p>この類似度を測るにあたって、Sparse Retriever と Dense Retrieverがあります。<br>
+
+                        Sparse Retrieverは特定の重要なキーワード（TF-IDF）が含んでいるかどうかを判定し、Dense Retrieverは文章の意味的（Embedding）な類似度があるかどうかを計算します。<a href="https://arxiv.org/pdf/2302.07842">(arxiv)</a><br>
+
+                         Dense Retriever (Neural Retriever)には、 Cross-encoder・DPR・ColBERTなど様々な種類が存在します。</p>
+
+                         <p>一旦はここまでです！ではでは。</p>
+
+                    </article>
+                    <article>
                         <h3>7/14 web3概論2024、終了！</h3>
                         <img src="home_image/web3.jpeg" class="inpost-img">
                         <p>Followed by english translation</p>
@@ -59,16 +123,6 @@
 
                         
                     </article>
-                    <article>
-                        <h3>6/29 初投稿：ブログはじめます！</h3>
-                        <p>こんにちは、Ayappiです。</p>
-                        <p>ブログを書きたいという願望と、最近のマイブームであるプログラミングが重なったこともあり、おもいきってブログサイトからゼロベースで始めることにしました。過去にも何度かHTMLとCSSでウェブサイトを作ったことはあるものの、どれも未完成のままで終わってしまっていたので、今回が初めての完成版となります:3</p>
-                        <p>一旦はこれをベースに、のんびりと運用していく予定です。</p>
-                        <p>ブログを始める理由はずばり「忘れないため」。考え方を記録することは実はとても大事で、私自身、大学生になってからほぼ毎月Vlog（ブログの動画版）や長文コメントを編集してはクローズに投稿していたのですが、あとから見返すと面白いぐらいに自分の生活や考え方が変わっているのが分かります。正直、記録していなければ気がついていなかったと思います。</p>
-                        <p>一方で周りの友人からは、公開しないのはもったいない！と、嬉しいお言葉をいただいたので、こうしてパブリックに公開できる場所を作ることにした次第です。まだどのように運用していくかは未定ですが、利用しながら考えていきます！</p>
-                        <p>自由気ままにやっていくかと思いますが、もしご興味があれば時折フラッと立ち寄っていただけると嬉しいですー！</p>
-                        <img src="home_image/paint.jpg" alt="img1" class="inpost-img">
-                    </article>
                     <div class="all_archive">
                         <a href="https://ayappi4649.github.io/ayappi.website/archive/archive.html"><h3>explore more</h3></a>
                     </div>
@@ -85,7 +139,7 @@
                     <div class="twitter">
                         <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">\<a href="https://twitter.com/hashtag/web3%E6%A6%82%E8%AB%96?src=hash&amp;ref_src=twsrc%5Etfw">#web3概論</a>、完！(*⁰▿⁰*)/<br>千葉工業大学にも初上陸 :D<br><br>今年もたくさんの良い刺激と学びをもらいました！私ももっと頑張らねば！！<br><br>そし今回、AIについての講義を一部担当させて頂いたのですが、なんと投票で2位という結果に。驚きと嬉しさで動揺です😭<br><br>楽しい時間をありがとうございました！！ <a href="https://t.co/muCHc8dm51">pic.twitter.com/muCHc8dm51</a></p>&mdash; Ayappi (@ayappi_froggy) <a href="https://twitter.com/ayappi_froggy/status/1811031077542338819?ref_src=twsrc%5Etfw">July 10, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     </div>
-                    <div class="archive">
+                    <!-- <div class="archive">
                         <div class="archive_inner">
                             <h6>Archive</h6>
                             <ul>
@@ -93,7 +147,7 @@
                                 
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
