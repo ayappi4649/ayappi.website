@@ -134,6 +134,14 @@ body {
     padding-top: 10px;
     line-height: 2;
 }
+/*<p class = "thick"></p>とすると、文字がboldになる。 */
+p.thick {
+    font-weight: bold;
+}
+/*<p class = "underline"></p>とすると、文字がunderlineされる。 */
+p.underline{
+    text-decoration: underline;
+}
 .all_archive{
     width: 100%;
     justify-content: center;
@@ -205,6 +213,7 @@ body {
     width: 100%;
     margin-top: 30px;
 }
+
 .archive{
     width: 100%;
     height: auto;
