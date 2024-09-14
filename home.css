@@ -138,10 +138,23 @@ body {
 p.thick {
     font-weight: bold;
 }
+p.code{
+    font-family: Consolas,"courier new";
+    font-size: 1em;
+    color: green;    
+    font-weight: light;
+}
 /*<p class = "underline"></p>とすると、文字がunderlineされる。 */
 p.underline{
     text-decoration: underline;
 }
+code{
+    font-family: Consolas,"courier new";
+    color: crimson;
+    background-color: #d0d0d0;
+    padding: 2px;
+}
+
 .all_archive{
     width: 100%;
     justify-content: center;
