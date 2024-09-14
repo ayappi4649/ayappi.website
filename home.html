@@ -32,6 +32,119 @@
                 <div class="blog_content">
                     <h2>2024</h2>
                     <article>
+                        <h3>9/15 Atcoder Contest 371 </h3>
+                        <p>Atcoder Beginner Contestが開催されたので、自分が解けた範囲の問題を解説・メモしていきます。</p>
+                        <hr>
+                        <p class="thick">問題文A - Jiro<a href="https://atcoder.jp/contests/abc371/tasks/abc371_a">(link)</a></p>
+                        <p style = "background-color: lightgray;">A, B, C の三兄弟がいます。この 3 人の年齢関係は、3 つの文字 SAB,SAC,SBC によって与えられ、それぞれ以下を意味します。<br>
+
+                            - SAB が `<` の場合  Aは  Bより年下であり、`>` の場合  Aは  Bより年上である。<br>
+                            - SAC が `<` の場合  Aは  Cより年下であり、`>` の場合  Aは  Cより年上である。<br>
+                            - SBC が `<` の場合  Bは  Cより年下であり、`>` の場合  Bは  Cより年上である。<br>
+                            
+                            三兄弟の次男、つまり二番目に年上の人は誰ですか？</p>
+                        
+                        <p class="thick">入力例</p>
+                        <p class="code">< < <</p>
+                        <p class="thick">出力例</p>
+                        <p class="code">B</p>
+                        <p class="thick">解説：</p>
+                        <p>あまりいい方法が思いつかず、全パターンif 文で書きました。もっといい方法があるのでは…</p>
+                        <p class="code">N, M, C = map(str,input().split())<br>
+
+                            if N == "<" and M ==">" or N == ">" and M =="<":<br>
+                                print("A")<br>
+                            
+                            if N == "<" and C == "<" or N == ">" and C == ">":<br>
+                                print("B")<br>
+                            
+                            if C == "<" and M ==">" or  C == ">" and M =="<":<br>
+                                print("C")</p>
+                        <p>例えばAが出力されるパターンを考えてみる。ABCという３人兄弟がいるので、次男がAとなるパターンは、 B < A < C、または、 C < A < Bの２択。<br>
+
+                            今回与えられる入力値はSAB,SAC,SBCでそれぞれABCの関係性が不等式で表されているため、その関係性を先ほどの２択と照らし合わせてみると…；<br><br>
+                            
+                            ①【 C < A < B 】  SAB: “<”   SAC: “>” <br>
+                            
+                            ②【 B < A < C 】 SAB: “>”   SAC: “<”<br><br>
+                            
+                            ここではSABをN、 SACをMと定義しているので、コードでは以下のようになる。</p>
+                        <p class="code">if N == "<" and M ==">" or N == ">" and M =="<":<br>
+                            print("A")</p>
+                        <p></p>
+
+
+                        <p class="thick">問題文B - Taro<a href="https://atcoder.jp/contests/abc371/tasks/abc371_b">(link)</a></p>
+                        <p style = "background-color: lightgray;">AtCoder 王国では、長男に必ず「太郎」という名前を付けます。長男以外には「太郎」という名前は付けません。 長男とは、各家で生まれた男の子のうち最も早く生まれた者を指します。
+
+                            AtCoder 王国には N 戸の家があり、M 人の赤子が生まれました。また、M 人の赤子が生まれる前には、N 戸のどの家も赤子が生まれたことはありませんでした。
+                            
+                            赤子の情報が生まれの時系列順に与えられます。
+                            
+                            i 番目に生まれた赤子は、Ai 番目の家で生まれ、Bi が `M` のとき男の子、`F` のとき女の子です。
+                            
+                            M 人の赤子それぞれについて、付けられた名前が「太郎」か判定してください。</p>
+                        
+                        <p class="thick">入力例</p>
+                        <p class="code">2 4<br>
+                            1 M<br>
+                            1 M<br>
+                            2 F<br>
+                            2 M</p>
+                        <p class="thick">出力例</p>
+                        <p class="code">Yes<br>
+                            No<br>
+                            No<br>
+                            Yes</p>
+            
+                        <p class="thick">解説：</p>
+                        <p class="code">// Nが家の数、Mが赤子の人数<br>
+                            N, M = map(int,input().split())<br><br>
+                            
+                            first_son = [False] * (N + 1)<br><br>
+                            
+                            for _ in range(M):<br>
+                                    //Aが何番目の家で生まれたかを表し、Bは性別で、MはMale、FはFemaleを表す。<br>
+                                A, B = input().split()<br>
+                                A = int(A)<br><br>
+                            
+                                if B == "M" and not first_son[A]:<br>
+                                    print("Yes")<br>
+                                    f_son[A] = True<br>
+                                else:<br>
+                                    print("No")</p>
+                        <p><code>first_son = [False] * (N + 1)</code>　で最初の男の子かを記録するフラグを入れておく。<br>
+
+                            <code>(N + 1)</code>なのは、python リストが０から始まるため。</p>
+                            
+                        <p>初期値では家の数ほどの<code>False</code>をリストに格納して、まだ男の子が１人もいない状態を作る。<br>
+                            
+                            例えばNが４で４戸の家があるなら、初期値でfirst_sonは<code>[False,False,False,False]</code>となる。つまり、４戸のどの家もまだ男の子が誕生していないことになる。</p>
+                            
+                        <p>次にif文で、上から順番にA番目の家に男の子がいるかを確認する。<br>
+                            
+                            A番目の家の子が、M（男の子）と表示されていて、かつfirst_sonでは<code>False</code>とされている場合、それはその家の初めての男の子ということになるため、<code>Yes</code>を出力する。</p>
+                            
+                        <p>例えば入力例では、１番目の家では男の子が誕生している。<br>
+                            
+                            1 M<br>
+                            
+                            first_sonの初期値は[False,False,False,False]なので、first_son[1]もFalseとなる（falseなのでコード上では not first_son[A]）。<br>
+                            
+                            男の子＋Falseという条件が成り立つため、Yesが出力される。</p>
+                            
+                        <p>そしてその参照したFalseを<code>True</code>に変えることで、A番目の家には男の子が生まれたことを記録する。するとまた同じ家で男の子が誕生しても、<code>if B == "M" and not first_son[A]:</code>が成り立たなくなるため、<code>No</code>が出力される。<br>
+                            
+                            例えば入力例の１番目のではさらに男の子が誕生している。<br>
+                            
+                            1 M <br>
+                            
+                            first_sonの値は更新されて<code>[False,True,False,False]</code>となるため、<code>first_son[1]</code>は<code>True</code>でnot first_son[A]が不成立となる。よって、<code>No</code>が出力される。</p>
+                        <p></p><p></p>
+
+
+                    </article>
+                    <article>
                         <h3>9/12 Prompting と RAG </h3>
                         <p>学んだ知識を自分なりに調べてまとめてみます。今日のテーマはプロンプティングとRAGについてです。</p>
                         <hr>
@@ -39,9 +152,9 @@
                         <p style = "background-color: lightgray;">prompt is a natural language request submitted to a language model to receive a response back.Prompts can contain questions, instructions, contextual information, few-shot examples, and partial input for the model to complete or continue.<br>（DeepL翻訳）プロンプトとは、言語モデルに自然言語のリクエストを送信し、応答を返すことである。これには質問、指示、文脈情報、例など、モデルが完了または続行するための部分的な入力を含めることができます。<a href="https://cloud.google.com/vertex-ai/generative-ai/docs/learn/prompts/introduction-prompt-design">(google cloud)</a></p>
 
                         <p>つまり、AIにタスクを指示する命令文のことをプロンプトと言います。<br>この命令文により、AIの出力文のクオリティが変わります。その質を向上させる方法が大きく分けて２種類あります。</p>
-                        <p>1. プロンプトで工夫する方法<br>2. 外部ツールの利用（RAG）する方法</p>
+                        <p>1. プロンプトで工夫する方法<br>2. 外部ツールを利用（RAG）する方法</p>
 
-                        <p>ちなみに、こういったプロンプト周りの研究をする Prompt Engineering と Prompt Designという学問分野があります。どちらもお互い近しい存在ですが、違いは以下の通りです。</p>
+                        <p>ちなみに、プロンプトを研究をする Prompt Engineering と Prompt Designという学問分野があります。どちらもお互い近しい存在ですが、違いは以下の通りです。</p>
 
                         <p style = "background-color: lightgray;">“prompt design focuses on formulating effective instructions, prompt engineering fine-tunes and enhances AI models to better respond to those prompts.<br>（DeepL翻訳）プロンプト・デザインは効果的な指示の策定に焦点を当て、プロンプト・エンジニアリングはそれらのプロンプトによりよく反応するようにAIモデルを微調整し、強化する。”<a href="https://daniel-ramos.medium.com/prompt-design-vs-prompt-engineering-unleashing-the-power-of-ai-language-models-3a606f9518d9">(Medium)</a></p>
 
@@ -56,7 +169,7 @@
                             
                             few shot - 例を複数提示</p>
                         <p>グラフによると、複数の例を入力することで回答の精度が上がると報告されています。ちなみに、このようにAIが文脈から学習することを In-Context Learningと呼びます。</p>
-                        <p>Fine Tuningとの使い分け：Fine Tune することで、プロンプトに毎回事例を入れる必要がなくなり、モデルも調整されているので性能が出やすい反面、Fine tune されていることでタスクによっては不向きなものがあり、汎用性がないのがデメリットです。</p>
+                        <p>Fine Tuningとの使い分け：Fine Tune することで、プロンプトに毎回事例を入れる必要がなくなり、モデルも調整されているので性能が出やすいです。一方で、Fine tune されていることでタスクによっては不向きなものがあり、汎用性がないのがデメリットです。</p>
 
                         <p class="thick">命令文の書き方に注目する</p>
                         <p>2022年12月の論文により、命令文の投げかけ方によって出力の性能が変わるという検証結果があります。これは分類タスクにおいて、プロンプトの書き方で精度がどう変化したかを表したものです。<a href="https://arxiv.org/pdf/2212.04037">(arxiv)</a></p>
@@ -72,7 +185,7 @@
                         <p>命令文の最後に、Let’s think step by stepと入れるだけで、思考過程を明示して推論能力が上がる、というものです。<a href="https://proceedings.neurips.cc/paper_files/paper/2022/file/8bb0d291acd4acf06ef112099c16f326-Paper-Conference.pdf">(NIPS papers)</a></p>
 
 
-                        <p class="thick">2. 外部ツールの利用（RAG）する方法</p>
+                        <p class="thick">2. 外部ツールを利用（RAG）する方法</p>
                         <p>RAG - Retrieval Augmented Generation<br> 
 
                             RAGとは、大規模言語モデル（LLM）によるテキスト生成に、外部情報の検索を組み合わせることで、回答精度を向上させる技術のことを指します。<br>
@@ -88,7 +201,7 @@
                         <img src="home_image/5.png" class="inpost-img">
                         <p>この類似度を測るにあたって、Sparse Retriever と Dense Retrieverがあります。<br>
 
-                        Sparse Retrieverは特定の重要なキーワード（TF-IDF）が含んでいるかどうかを判定し、Dense Retrieverは文章の意味的（Embedding）な類似度があるかどうかを計算します。<a href="https://arxiv.org/pdf/2302.07842">(arxiv)</a><br>
+                        Sparse Retrieverは特定の重要なキーワード（TF-IDF）が含んでいるかどうかの判定を得意とし、Dense Retrieverは文章の意味的（Embedding）な類似度があるかどうかの計算を得意とします。<a href="https://arxiv.org/pdf/2302.07842">(arxiv)</a><br>
 
                          Dense Retriever (Neural Retriever)には、 Cross-encoder・DPR・ColBERTなど様々な種類が存在します。</p>
 
