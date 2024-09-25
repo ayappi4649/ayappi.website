@@ -7,8 +7,18 @@ body {
 
 /*SETTING OF IMAGES USED IN ARTICLE*/
 .inpost-img {
-    width: 30%;
+    width: 50%;
     height: auto;
+    padding-top: 20px;
+}
+
+.button{
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: transparent;
+}
+.button1:hover{
+    background-color: #50775d;
 }
 
 .header {
@@ -28,6 +38,27 @@ body {
     display: block;
     margin: 0 auto;
 }
+/*<p class = "thick"></p>とすると、文字がboldになる。 */
+p.thick {
+    font-weight: bold;
+}
+p.code{
+    font-family: Consolas,"courier new";
+    font-size: 1em;
+    color: green;    
+    font-weight: light;
+}
+/*<p class = "underline"></p>とすると、文字がunderlineされる。 */
+p.underline{
+    text-decoration: underline;
+}
+code{
+    font-family: Consolas,"courier new";
+    color: crimson;
+    background-color: #d0d0d0;
+    padding: 2px;
+}
+
 .return{
     position:fixed; 
     bottom:0px; 
@@ -111,6 +142,32 @@ body {
     padding-top: 10px;
     line-height: 2;
 }
+
+.collapsible {
+    background-color: #50775d;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    margin-bottom: 5px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+  
+.active,.collapsible:hover {
+    background-color: #43624d;
+}
+  
+.content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    background-color: #f1f1f1;
+}
+
 @media screen and (max-width: 1170px) {
     .inner_main {
         width: 90%;
