@@ -18,16 +18,15 @@
             </div>
         </div>
     </div>
+    
     <div class="top">
         <canvas id="character"></canvas>
-        <img src="rest_image/thinking.png" id="think">
-        <h1>What's on your mind?</h1>
-        <h2>recommended to use PC</h2>
+        <div id="clickCountDisplay">Let the Happiness Seep In</div>
+        <img src="rest_image/heart_before.png" id="heart" onclick="handleHeartClick()" style="cursor: pointer;">
+        <!-- <h1>Love & Peace</h1> -->
         <div class="bush"></div>
-        <div class="input">
-            <input type="text" id="input" required minlength="1" size="20" onkeydown="handleKeyPress(event)" />
-        </div>
     </div>
+    
     <script src="frog.js"></script>
     <script src="background.js"></script>
     <script src="rain.js"></script>
