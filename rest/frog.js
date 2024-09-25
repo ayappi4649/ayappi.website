@@ -28,4 +28,28 @@ function animate(){
 
 };
 
+let clickCount = 0;
+
+function handleHeartClick() {
+    const heartImage = document.getElementById('heart');
+
+    // クリック時に画像を変更
+    heartImage.src = 'rest_image/heart_after.png';
+
+    // 500ミリ秒後に元の画像に戻す
+    setTimeout(() => {
+        heartImage.src = 'rest_image/heart_before.png';
+    }, 500);
+}
+// ページ読み込み時にクリック回数を取得して表示
+window.onload = function() {
+    fetch('/clicks')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('clickCountDisplay').innerText = `Total Clicks: ${data.total_clicks}`;
+        });
+}
+
+
+
 animate();
