@@ -1,28 +1,22 @@
-// Add this function to handle the Enter key press event in the input field
-function handleKeyPress(event) {
-    if (event.key === 'Enter') {
-        const inputField = document.getElementById('input');
-        const text = inputField.value;
-        inputField.value = '';
-        createFallingText(text);
-    }
-}
 
 // Function to create and animate the falling text
-function createFallingText(text) {
-    for (let i = 0; i < 50; i++) { // Create 100 instances of the text
-        const textElement = document.createElement('div');
-        textElement.textContent = text;
-        textElement.className = 'falling-text'; // Add CSS class for animation
-        textElement.style.left = `${Math.random() * window.innerWidth}px`; // Random horizontal position
-        textElement.style.animationDuration = `${Math.random() * 3 + 3}s`; // Random falling duration
-        textElement.addEventListener('animationend', () => {
-            textElement.remove(); // Remove element after animation ends
+function createFallingIcon(iconSrc) {
+    for (let i = 0; i < 50; i++) {  
+        const iconElement = document.createElement('img');
+        iconElement.src = iconSrc;
+        iconElement.className = 'falling-icon'; // CSSクラスでアニメーションを制御
+        iconElement.style.left = `${Math.random() * window.innerWidth}px`; 
+        iconElement.style.top = `-${Math.random() * 100}px`; // 初期の垂直位置を画面外に設定
+        iconElement.style.animationDuration = `${Math.random() * 3 + 3}s`; 
+        iconElement.style.position = 'absolute';  
+        iconElement.addEventListener('animationend', () => {
+            iconElement.remove(); // アニメーション終了後に要素を削除
         });
-        document.body.appendChild(textElement);
+        document.body.appendChild(iconElement); // アイコンを画面に追加
     }
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    document.addEventListener("keydown", handleKeyPress);
+
+document.getElementById('heart').addEventListener('click', function() {
+    createFallingIcon('rest_image/heart_pixel.png');  
 });
