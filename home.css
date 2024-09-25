@@ -5,6 +5,37 @@ body {
     margin: 0;
 }
 
+.sns_icon{
+    float: right;
+    padding: 5px;
+}
+
+/* SETTING FOR SEARCH BAR */
+/* .search-form {
+    background-color: transparent;
+}
+
+.search-input {
+    height: 30px;
+    width: 300px;
+    margin-bottom: 50px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.search-button {
+    height: 30px;
+    border: none;
+    background-color: #013501;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.search-button:hover {
+    background-color: #005f1b;
+} */
+
 /*SETTING OF IMAGES USED IN ARTICLE*/
 .inpost-img {
     width: 100%;
@@ -98,6 +129,7 @@ body {
     justify-content: center;
     /* background-color: red; */
 }
+
 
 .inner_main {
     width: 100%;
