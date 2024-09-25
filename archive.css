@@ -27,7 +27,7 @@ body {
     /* background-color: rgb(171, 210, 28); */
 }
 #cover{
-    background-image: url(../home_image/header_cover.jpg);
+    background-image: url(home_image/header_cover.jpg);
     background-size: cover;
     max-width:100%;
     height: 80px;
