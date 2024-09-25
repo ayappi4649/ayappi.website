@@ -58,41 +58,40 @@ body{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: rgb(73, 64, 64);
 }
-.top h2{
+
+#clickCountDisplay{
     position: absolute;
     width: 100%;
-    top: 65%; /* 画面の中央より少し下 */
+    top: 50%; /* 画面の中央より少し下 */
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 18px;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bolder;
+    color: rgb(73, 64, 64);
+}
+/* .top h2{
+    position: absolute;
+    width: 100%;
+    top: 69.5%; /* 画面の中央より少し下 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15px;
     text-align: center;
     font-weight: bolder;
     font-family: monospace;
     color: white;
-}
-.input {
+} 
+*/
+
+#heart {
     position: absolute;
+    width: 80px;
     top: 72%; /* 画面の中央より少し下 */
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-
-@media screen and (max-width: 768px) {
-    .top h1 {
-        top: 50%; /* 小さい画面のために調整 */
-        transform: translate(-50%, -50%);
-    }
-    .top h2 {
-        top: 55%; /* 小さい画面のために調整 */
-        transform: translate(-50%, -50%);
-    }
-
-    .input {
-        top: 62%; /* 小さい画面のために調整 */
-        transform: translate(-50%, -50%);
-    }
-}
 #character{
     position: absolute;
     bottom: 0;
@@ -109,6 +108,7 @@ body{
     width: 40px;
 }
 
+
 /* .return{
     background-color: red;
     position: absolute;
@@ -124,19 +124,14 @@ body{
     z-index: 4;
     bottom: 0;
 }
-.falling-text {
+.falling-icon {
     position: absolute;
-    top: -100vh;
     color: rgb(16, 124, 255);
-    font-size: 20px;
-    font-family: monospace;
-    font-weight: bold;
+    width: 30px;
     animation-name: fall;
     animation-timing-function: ease-in-out; 
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-    transform: rotate(90deg); 
-    transform-origin: left top; /* Set rotation origin */
     
 }
 
@@ -146,5 +141,21 @@ body{
     }
     100% {
         top: 200vh; 
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .top h1 {
+        top: 50%; /* 小さい画面のために調整 */
+        transform: translate(-50%, -50%);
+    }
+    .top h2 {
+        top: 55%; /* 小さい画面のために調整 */
+        transform: translate(-50%, -50%);
+    }
+
+    .input {
+        top: 62%; /* 小さい画面のために調整 */
+        transform: translate(-50%, -50%);
     }
 }
