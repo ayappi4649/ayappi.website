@@ -38,7 +38,7 @@ function handleHeartClick() {
 
     // 500ミリ秒後に元の画像に戻す
     setTimeout(() => {
-        heartImage.src = 'rest_image/heart_before.png';
+        heartImage.src = 'rest_image/whiteheart_before.png';
     }, 500);
 }
 // ページ読み込み時にクリック回数を取得して表示
