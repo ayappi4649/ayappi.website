@@ -1,5 +1,5 @@
 body{
-    background-color:rgb(177, 219, 229);
+    background-image: url(rest_image/clearsky.jpg);
     overflow: hidden; /* Prevent horizontal scrolling */
     margin: 0;
     padding: 0;
@@ -9,19 +9,20 @@ body{
     height: 80%;
     position: absolute;
 }
+
 .bottom{
     width: 100%;
     height:20%;
     position: absolute;
     bottom: 0;
-    background-color: rgb(73, 64, 64);
+    background-image: url(rest_image/browndirt.jpg);
     z-index: 5;
 }
 .inner_bottom{
     position: absolute;
     left: 50%;
     transform: translate(-50%,0px);
-    width: 100px;
+    width: 100%;
     height: 100%;
 }
 .return,a{
@@ -31,17 +32,18 @@ body{
 
 }
 .return h1{
-    font-size: 30px;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 90%;
+    font-size: 20px;
     text-align: center;
-    transform: translateY(20px);
-    font-weight: light;
-    font-family: monospace;
-    color:rgb(215, 215, 215);
+    color: rgb(30, 6, 6);
     transition: .4s;
 }
 .return h1:hover{
     cursor: pointer;
-    color: white;
+    color: rgb(84, 159, 239);
     transform: translateY(10px);
     transition: .3s;
 
@@ -49,7 +51,7 @@ body{
 .top h1 {
     position: absolute;
     width: 100%;
-    top: 60%; /* 画面の中央より少し下 */
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 30px;
@@ -59,7 +61,7 @@ body{
     color: rgb(73, 64, 64);
 }
 
-#clickCountDisplay{
+#title{
     position: absolute;
     width: 100%;
     top: 50%; /* 画面の中央より少し下 */
@@ -68,7 +70,7 @@ body{
     font-size: 30px;
     text-align: center;
     font-weight: bolder;
-    color: rgb(73, 64, 64);
+    color: rgb(220, 216, 216);
 }
 /* .top h2{
     position: absolute;
@@ -85,11 +87,12 @@ body{
 */
 
 #heart {
-    position: absolute;
     width: 80px;
-    top: 72%; /* 画面の中央より少し下 */
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative; /* 要素の相対位置を指定 */
+    top: 60%; /* 中央より少し下に移動 */
 }
 
 #character{
@@ -117,16 +120,16 @@ body{
 
 } */
 .grass {
-    width: 130x;
+    width: 130px;
     height: 130px;
     position: absolute;
     transform: translate(0, 5px);
     z-index: 4;
     bottom: 0;
 }
+
 .falling-icon {
     position: absolute;
-    color: rgb(16, 124, 255);
     width: 30px;
     animation-name: fall;
     animation-timing-function: ease-in-out; 
@@ -144,18 +147,19 @@ body{
     }
 }
 
+/* 小さい画面のために調整 */
 @media screen and (max-width: 768px) {
     .top h1 {
-        top: 50%; /* 小さい画面のために調整 */
+        top: 50%; 
         transform: translate(-50%, -50%);
     }
     .top h2 {
-        top: 55%; /* 小さい画面のために調整 */
+        top: 55%; 
         transform: translate(-50%, -50%);
     }
 
     .input {
-        top: 62%; /* 小さい画面のために調整 */
+        top: 62%; 
         transform: translate(-50%, -50%);
     }
 }
