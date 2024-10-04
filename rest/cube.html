@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cubies</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+    
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: black;
+    }
+    .return-text {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 24px;
+      font-family: 'Lobster', cursive;
+      transition: text-shadow 0.3s ease;
+    }
+    .return-text:hover {
+      text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.8);
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<body>
+
+<a href="https://ayappi4649.github.io/ayappi.website/home.html" class="return-text">Return</a>
+
+<script>
+  let stars = [];
+  let angle = 0;
+  let zoom = 1;
+  let lastMouseX = 0;
+  let lastMouseY = 0;
+  let rotationX = 0;
+  let rotationY = 0;
+
+  function setup() {
+    createCanvas(windowWidth, windowHeight, WEBGL);
+    setAttributes('antialias', true);
+    // 星の初期設定
+    for (let i = 0; i < 130; i++) {
+      stars.push(new Star());
+    }
+  }
+
+  function draw() {
+    background(0);
+    translate(0, 0, zoom * 200);
+    rotateX(rotationX);
+    rotateY(rotationY);
+
+    // 3Dキューブを描画
+    rotateX(angle);
+    rotateY(angle * 0.5);
+    rotateZ(angle * 0.3);
+    
+    stroke(0);
+    fill(255);
+
+    // 小さなキューブを配置
+    let cubeSize = 30;
+    let gap = 5;
+    let bigCubeSize = 70;
+    for (let x = -bigCubeSize; x <= bigCubeSize; x += cubeSize + gap) {
+      for (let y = -bigCubeSize; y <= bigCubeSize; y += cubeSize + gap) {
+        for (let z = -bigCubeSize; z <= bigCubeSize; z += cubeSize + gap) {
+          push();
+          translate(x, y, z);
+          box(cubeSize);
+          pop();
+        }
+      }
+    }
+    
+    // キューブの回転速度
+    angle += 0.002;
+
+    // 星を描画
+    for (let i = 0; i < stars.length; i++) {
+      stars[i].update();
+      stars[i].show();
+    }
+  }
+
+  // 星のクラス
+  class Star {
+    constructor() {
+      this.x = random(-width, width);
+      this.y = random(-height, height);
+      this.z = random(-width, width);
+      this.size = random(1, 3);
+      this.twinkle = random(0.01, 0.1);
+    }
+
+    update() {
+      // 星をゆらゆら揺らす
+      this.size += this.twinkle;
+      if (this.size > 3 || this.size < 1) {
+        this.twinkle *= -1;
+      }
+    }
+
+    show() {
+      push();
+      translate(this.x, this.y, this.z);
+      noStroke();
+      fill(255);
+      ellipse(0, 0, this.size);
+      pop();
+    }
+  }
+
+  function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+  }
+
+  function mouseDragged() {
+    let dx = mouseX - lastMouseX;
+    let dy = mouseY - lastMouseY;
+    rotationX -= dy * 0.01;
+    rotationY += dx * 0.01;
+    lastMouseX = mouseX;
+    lastMouseY = mouseY;
+  }
+
+  function mousePressed() {
+    lastMouseX = mouseX;
+    lastMouseY = mouseY;
+  }
+
+  function mouseWheel(event) {
+    zoom += event.delta * -0.001;
+    zoom = constrain(zoom, 0.001, 2);
+  }
+</script>
+
+</body>
+</html>
