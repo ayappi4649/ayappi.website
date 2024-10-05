@@ -47,30 +47,60 @@
                     </a>
                     </h2>
                     <article>
-                        <h3>10/2 What is Lightning Network?</h3>
-                        <p><iframe width= 100% height = "315"
-                            src="https://www.youtube.com/embed/suX1WHqUwoU?si=VsGuKW9PoXU1CitX">
-                        </iframe><br>
-                         Here's an option for audio learner. Turn on CC for english subtitle.
-                        <p>
-                        I recently attended a blockchain event where the Lightning Network was discussed. As someone unfamiliar with this technology, I decided to do some research.  I hope you find it helpful!
-                        </p>
-                        <p>
-                        Bitcoin, since its inception, has revolutionized the digital world, paving the way for a plethora of decentralized and peer-to-peer digital currencies and technological solutions. However, as Bitcoin expanded, it faced scalability issues, including limited transaction throughput and high fees at times. The Lightning Network was developed as a solution to these problems.</p>
-                      
-                        <p>The Lightning Network is an off-chain solution built on the Bitcoin blockchain. It functions much like an alternative road that runs parallel to the main highway (Bitcoin blockchain), facilitating quick, small transactions without causing congestion on the main route. This is achieved through the use of payment channels that allow two parties to complete several transactions off-chain before settling the final balance on the main blockchain.</p>
-                      
-                        <p>These payment channels are bidirectional, allowing both parties to send and receive payments. A channel can be opened by two parties depositing BTC in a 2-of-2 multi-sig address. Once the transaction is confirmed, the channel opens, allowing for any number of transactions at a significantly low cost and speed. The channel can be closed when the parties transact through another network chain transaction reflecting their net balances’ changes.</p>
-                      
-                        <p>The Lightning Network also has a routing system that facilitates payments between people who do not have a payment channel and uses smart contracts to secure such off-chain transactions. This makes Bitcoin more useful by addressing some of its critical issues, such as scalability, high transaction fees, and transaction speed.</p>
-                      
-                        <p>However, like any other system, the Lightning Network is not without its risks. Several security risks have been identified over its history, including the Zombie Attack, the Mass Exit Attack, and the Time-Dilation Attack, among others. But with the implementation of necessary mitigation strategies, the Lightning Network can grow to be a secure and scalable solution for Bitcoin transactions.</p>
-                      
-                        <p>For more details, visit <a href="https://hacken.io/discover/lightning-network/">https://hacken.io/discover/lightning-network/</a>.</p>
-                      </article>
-                      
+                        <h3>10/05 大学のSA業務をDX・自動化した話</h3>
+                        <p>こんにちは、あやっぴです。</p>
+                        <p>私は大学で何度かSA（Student Assistant）を担当したことがあるのですが、そのアナログな業務をDX化したので紹介してみます。</p>
+                
+                        <p>SAとはStudent Assistantの略で、授業で教授のお手伝いをする人のことです。業務は主に受講生の出席確認、課題提出の記録、発言の加点などがあります。</p>
+                
+                        <p>通常、これらの作業はすべてアナログで行います。例えば出席確認の場合、受講生に専用の紙を配り、そこに各自が学籍番号や名前などを記入。そして授業後にSAが紙を回収し、自宅で地道にエクセルに記録していく……という流れです。</p>
+                        <p>少人数のクラスならアナログでも問題ないかもしれませんが、20人以上になるとSAが辛い思いをします。そして、読解困難な文字もあって、これがまた大変でストレス(´；ω；`)</p>
+                
+                        <p>授業中は手ぶらな状態で、授業外の時間を作業に使うのはもったいないですよね。できればすべて授業時間内に終わらせたい……！ という思いから、DX・自動化を考え始めました。ただ、長年教鞭を取られてきた先生曰く、デジタルだと学生があらゆる手段で抜け穴を見つけてしまい、結局紙が最強だという結論に至ったそうです。くぅ……！</p>
+                        
+                        <p>今回私が担当した授業の成績は、以下の基準で定められていました。</p>
+                        <ul>
+                            <li>課題提出</li>
+                            <li>授業参加（内容次第では先生からさらに追加点ももらえる）
+                                <ul>
+                                    <li>発言</li>
+                                    <li>発表</li>
+                                </ul>
+                            </li>
+                        </ul>
+                
+                        <p>アナログだと、学生が発言・発表するたびに紙を渡し、手書きの情報をもとに後でエクセルに記録する、という流れになります。課題については、学生が専用サイトから提出するため、最終的にSAのところにはPDF化されたファイルが渡されます。下の図は従来のやり方です。</p>
+                        <p><img src="post-image/before.jpg" class="inpost-img"></p>
+                
+                        <p>次に今回私が新しく作った仕組みです。照合部分をDX・自動化して、全体的にアナログとデジタルのハイブリッド型にしてみました。</p>
+                        <p><img src="post-image/after.jpg" class="inpost-img"></p>
+                        <p>このシステムの中核はGoogle SpreadsheetとGoogle Formです。スプレッドシートは先生とSAの間で厳重に保管し、フォームは常に受講生に公開しています。</p>
+                
+                        <p>従来の手段で最も時間を取られていたのが、この照合プロセスです。そこを今回自動化しました。完全デジタルにしなかった理由は、抜け穴が生まれるリスクがあったためです。それでもSAとしての負担は大幅に減りました。</p>
+                        <p>このアプローチで果たして抜け穴があるかどうか……。番号が書かれた紙が奪われるくらいしか思いつきませんでした。</p>
+                
+                        <p>今回の自動化はすべてスプレッドシート内で行っています。その仕組みを紹介します。スプレッドシートは凄いですよ……！ ちょっと扱いにくいところはありますが、コード次第で無限の可能性が広がります。</p>
+                        <p>下の図は若干簡略化していますが、考え方は同じです。各四角形はスプレッドシートのタブを表しています。タブは全部で5つあり、そのうち2つはGoogle Formにより自動生成されます。</p>
+                        <p>今回は発言用と発表用の2種類のフォームを用意しました。受講生には事前にフォームの使い分けを説明しておき、SA側ではフォームとスプレッドシートを連携させます。この連携はボタン1つで簡単に行えるので非常に便利です。こうすることで、フォームが提出されるたびに自動でスプレッドシートに情報が更新されていきます。</p>
+                        <p><img src="post-image/detail.jpg" class="inpost-img"></p>
+                
+                        <p><strong>【メリット】</strong></p>
+                        <ul>
+                            <li>照合作業が自動化され、ヒューマンエラーがほぼゼロになる。</li>
+                            <li>SAの毎週の負担が大幅に減る。</li>
+                        </ul>
+                
+                        <p><strong>【デメリット】</strong></p>
+                        <ul>
+                            <li>癖のあるシステムなので、テンプレがあってもITに慣れている人でないと扱いにくいかもしれない。</li>
+                            <li>事前準備として、毎週の4桁番号をスプレッドシートに格納しておく必要がある。</li>
+                        </ul>
+                
+                        <p>いかがでしたか？</p>
+                        <p>ちなみにこのシステムを先生に見せたところ、「Laziness is the mother of inventionだね」と言われて、フフフとなりました。</p>
+                        <p>ではでは。</p>
+                    </article>
                     
-
                     <div class="all_archive">
                         <a href="https://ayappi4649.github.io/ayappi.website/archive.html"><h3>explore more</h3></a>
                     </div>
